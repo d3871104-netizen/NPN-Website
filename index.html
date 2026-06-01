@@ -29,7 +29,7 @@ a{text-decoration:none;color:inherit;}
 /* MASTHEAD */
 .masthead{background:var(--deep);border-bottom:1px solid var(--border);height:68px;padding:0 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:900;}
 
-/* NPN OCTAGON CAGE LOGO */
+/* BAM OCTAGON CAGE LOGO */
 .logo-wrap{position:relative;z-index:901;flex-shrink:0;}
 .logo-shield-btn{
   background:none;border:none;cursor:pointer;
@@ -55,13 +55,41 @@ a{text-decoration:none;color:inherit;}
 .wordmark p{font-family:var(--edit);font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:1px;}
 
 /* STOCK TRACKER */
-.stock-tracker{flex-shrink:0;min-width:108px;text-align:right;display:flex;flex-direction:column;justify-content:center;gap:1px;padding-left:8px;border-left:1px solid var(--border);}
+.stock-tracker{flex-shrink:0;min-width:110px;text-align:right;display:flex;flex-direction:column;justify-content:center;gap:1px;padding-left:8px;border-left:1px solid var(--border);position:relative;cursor:pointer;}
+.stock-link{display:flex;flex-direction:column;align-items:flex-end;gap:1px;text-decoration:none;color:inherit;}
 .stock-top{display:flex;align-items:center;gap:5px;justify-content:flex-end;}
 .stock-sym{font-family:var(--edit);font-size:12px;font-weight:700;letter-spacing:2px;color:var(--white);}
 .stock-exch{font-family:var(--edit);font-size:8px;letter-spacing:1px;color:var(--muted);padding:1px 4px;border:1px solid var(--border);}
 .tko-price{font-family:var(--edit);font-size:15px;font-weight:600;color:var(--white);line-height:1;}
 .tko-chg{font-family:var(--edit);font-size:9px;letter-spacing:.5px;line-height:1;}
 .stock-up{color:#22c55e;}.stock-dn{color:#ef4444;}.stock-na{color:var(--muted);}
+/* Stock panel dropdown */
+.stock-panel{position:absolute;top:calc(100% + 6px);right:0;width:290px;background:var(--deep);border:1px solid var(--border);border-top:3px solid var(--red);box-shadow:0 16px 50px rgba(0,0,0,.9);padding:0;display:none;z-index:999;}
+.stock-tracker:hover .stock-panel{display:block;}
+.sp-header{padding:14px 16px 10px;border-bottom:1px solid var(--border);}
+.sp-company{font-family:var(--edit);font-size:13px;font-weight:600;color:var(--white);letter-spacing:.5px;margin-bottom:3px;}
+.sp-sym-row{display:flex;align-items:center;gap:6px;}
+.sp-sym{font-family:var(--edit);font-size:10px;color:var(--muted);letter-spacing:2px;}
+.sp-exch{font-family:var(--edit);font-size:8px;color:var(--muted);padding:1px 4px;border:1px solid var(--border);}
+.sp-price-section{padding:10px 16px;border-bottom:1px solid var(--border);}
+.sp-big-price{font-family:var(--edit);font-size:26px;font-weight:700;letter-spacing:1px;display:block;line-height:1;}
+.sp-big-chg{font-family:var(--edit);font-size:11px;letter-spacing:.5px;display:block;margin-top:2px;}
+.sp-range-section{padding:10px 16px;border-bottom:1px solid var(--border);}
+.sp-range-labels{display:flex;justify-content:space-between;margin-bottom:5px;}
+.sp-range-lbl-item{font-family:var(--edit);font-size:9px;color:var(--muted);letter-spacing:.5px;}
+.sp-range-lbl-item span{display:block;font-size:10px;color:var(--white);margin-top:1px;}
+.sp-bar-track{position:relative;height:4px;background:var(--border);border-radius:2px;margin:4px 0;}
+.sp-bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--red);border-radius:2px;transition:width .6s ease;}
+.sp-bar-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;background:var(--white);border:2px solid var(--red);border-radius:50%;transition:left .6s ease;}
+.sp-range-day-title{font-family:var(--edit);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:4px;}
+.sp-grid{display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;gap:0;border-bottom:1px solid var(--border);}
+.sp-stat{padding:5px 0;border-bottom:1px solid rgba(29,33,51,.6);display:flex;flex-direction:column;gap:2px;}
+.sp-stat:nth-last-child(-n+2){border-bottom:none;}
+.sp-stat-l{font-family:var(--edit);font-size:8px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;}
+.sp-v{font-family:var(--edit);font-size:11px;color:var(--white);font-weight:500;}
+.sp-footer{padding:9px 16px;text-align:center;}
+.sp-yf-link{font-family:var(--edit);font-size:9px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:color .2s;}
+.sp-yf-link:hover{color:#e8c970;}
 
 /* HERO */
 .hero{position:relative;background:#000;}
@@ -167,7 +195,8 @@ a{text-decoration:none;color:inherit;}
 .fighter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1380px;margin:0 auto;padding:0 28px 50px;}
 .fighter-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:border-color .2s,transform .2s;}
 .fighter-card:hover{border-color:rgba(217,26,26,.45);transform:translateY(-4px);}
-.fighter-headshot{aspect-ratio:1;background:var(--deep);border-bottom:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;}
+.fighter-headshot{aspect-ratio:3/4;overflow:hidden;border-bottom:1px solid var(--border);background:var(--deep);}
+.fighter-headshot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
 .fighter-headshot .ph-icon{font-size:44px;opacity:.15;}
 .fighter-headshot span.ph-sub{font-family:var(--edit);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
 .fighter-info{padding:20px;}
@@ -176,14 +205,17 @@ a{text-decoration:none;color:inherit;}
 .fighter-stat{font-family:var(--edit);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
 .fighter-stat span{color:var(--gold);}
 .fighter-bio{font-size:13px;color:rgba(244,241,236,.65);line-height:1.7;margin-bottom:16px;}
-.fighter-video{background:var(--deep);border:1px dashed var(--border);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.fighter-video-wrap{position:relative;aspect-ratio:16/9;background:#000;}
+.fighter-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
 .fighter-video .reel-play{font-size:24px;opacity:.2;margin-bottom:0;}
 .sponsors-section{background:var(--deep);border-top:1px solid var(--border);padding:50px 28px;}
 .sponsors-inner{max-width:1380px;margin:0 auto;}
 .sponsors-title{font-family:var(--disp);font-size:34px;letter-spacing:4px;color:var(--white);text-align:center;margin-bottom:8px;}
 .sponsors-sub{font-family:var(--edit);font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:36px;}
 .sponsors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-.sponsor-card{background:var(--card);border:1px dashed var(--border);height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:border-color .2s;}
+.sponsor-card{background:var(--card);border:1px dashed var(--border);height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:border-color .2s,transform .2s;cursor:pointer;text-decoration:none;}
+.sponsor-card:hover{transform:scale(1.03);}
+.sponsor-img{height:58px;width:auto;max-width:80%;object-fit:contain;}
 .sponsor-card:hover{border-color:rgba(201,168,76,.4);}
 .sponsor-icon{font-size:24px;opacity:.18;}
 .sponsor-lbl{font-family:var(--edit);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
@@ -227,7 +259,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 /* ROSTER JOIN POPUP */
 .roster-modal{width:480px;}
 .roster-modal-head{background:var(--red);padding:32px 36px;text-align:center;}
-.roster-modal-oct{display:flex;justify-content:center;margin-bottom:14px;}
 .roster-modal-head h2{font-family:var(--disp);font-size:38px;letter-spacing:5px;color:#fff;line-height:1;}
 .roster-modal-head p{font-family:var(--edit);font-size:12px;color:rgba(255,255,255,.75);margin-top:6px;letter-spacing:.5px;}
 .roster-modal-body{padding:28px 36px;}
@@ -282,7 +313,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <line x1="22" y1="40" x2="22" y2="33" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <line x1="4" y1="22" x2="11" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <circle cx="22" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.65)" stroke-width=".9"/>
-          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">NPN</text>
+          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">BAM</text>
         </svg>
         <span class="menu-label">MENU &#9662;</span>
       </button>
@@ -294,17 +325,49 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <a href="#" onclick="nav('contact');return false;">&#9993;&nbsp; Contact</a>
       </nav>
     </div>
-    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage and Management</p></div>
+    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage</p></div>
     <div class="stock-tracker">
-      <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
-      <span class="tko-price stock-na">&#8212;</span>
-      <span class="tko-chg stock-na">Loading&hellip;</span>
+      <a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="stock-link">
+        <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
+        <span class="tko-price stock-na">&#8212;</span>
+        <span class="tko-chg stock-na">Loading&hellip;</span>
+      </a>
+      <div class="stock-panel">
+        <div class="sp-header">
+          <div class="sp-company">TKO Group Holdings</div>
+          <div class="sp-sym-row"><span class="sp-sym">TKO</span><span class="sp-exch">NYSE</span></div>
+        </div>
+        <div class="sp-price-section">
+          <span class="sp-big-price stock-na">&#8212;</span>
+          <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-range-section">
+          <div class="sp-range-labels">
+            <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:center">Current<span class="sp-curr-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:right">High<span class="sp-high-lbl">&#8212;</span></div>
+          </div>
+          <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
+          <div class="sp-range-day-title">Day Range</div>
+        </div>
+        <div class="sp-grid">
+          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
+        </div>
+        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
+      </div>
     </div>
   </header>
 
   <section class="hero">
     <div class="hero-iframe-wrap">
-      <iframe src="https://www.youtube.com/embed/hxh_PwsI6Gs?rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="NPN Featured Video"></iframe>
+      <iframe src="https://www.youtube.com/embed/hxh_PwsI6Gs?rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="BAM Featured Video"></iframe>
     </div>
     <div class="hero-caption">
       <span class="hero-tag">Featured Story</span>
@@ -358,13 +421,13 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
   <footer>
     <div class="ft-inner">
       <div class="ft-grid">
-        <div class="ft-brand"><h2>The National Press Network</h2><p>The premier destination for MMA news, exclusive fighter interviews, fight-night coverage, and in-depth analysis from across the world of mixed martial arts.</p></div>
+        <div class="ft-brand"><h2>Boxing Access Media, Inc.</h2><p>The premier destination for MMA news, exclusive fighter interviews, fight-night coverage, and in-depth analysis from across the world of mixed martial arts.</p></div>
         <div class="ft-col"><h3>Coverage</h3><a href="#">UFC</a><a href="#">APFC</a><a href="#">ONE FC</a><a href="#">PFL</a><a href="#">Rankings</a></div>
         <div class="ft-col"><h3>Company</h3><a href="#" onclick="nav('about');return false;">About Us</a><a href="#" onclick="nav('interviews');return false;">Interviews</a><a href="#" onclick="nav('roster');return false;">Roster</a><a href="#" onclick="nav('contact');return false;">Contact</a><a href="#">Advertising</a></div>
         <div class="ft-col"><h3>Follow Us</h3><a href="#">Twitter / X</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Facebook</a></div>
       </div>
       <div class="ft-bottom">
-        <p>&copy; 2026 The National Press Network &middot; pressnetwork.org</p>
+        <p>&copy; 2025 Boxing Access Media, Inc. &middot; pressnetwork.org</p>
         <p>Privacy Policy &nbsp;&middot;&nbsp; Terms of Use &nbsp;&middot;&nbsp; Advertising</p>
       </div>
     </div>
@@ -375,7 +438,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
      PAGE: INTERVIEWS
 ============================================================ -->
 <div id="pg-interviews" class="page">
-  <div class="ticker-bar"><span class="ticker-label">NPN</span><div class="ticker-track"><span class="ticker-text" id="ticker-int">Loading...</span></div></div>
+  <div class="ticker-bar"><span class="ticker-label">BAM</span><div class="ticker-track"><span class="ticker-text" id="ticker-int">Loading...</span></div></div>
   <header class="masthead">
     <div class="logo-wrap" id="wrap-int">
       <button class="logo-shield-btn" id="btn-int" aria-label="Open navigation menu">
@@ -395,7 +458,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <line x1="22" y1="40" x2="22" y2="33" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <line x1="4" y1="22" x2="11" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <circle cx="22" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.65)" stroke-width=".9"/>
-          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">NPN</text>
+          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">BAM</text>
         </svg>
         <span class="menu-label">MENU &#9662;</span>
       </button>
@@ -407,11 +470,43 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <a href="#" onclick="nav('contact');return false;">&#9993;&nbsp; Contact</a>
       </nav>
     </div>
-    <div class="wordmark"><h1>The National Press Network</h1><p>Your Premier Source for MMA Coverage</p></div>
+    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage</p></div>
     <div class="stock-tracker">
-      <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
-      <span class="tko-price stock-na">&#8212;</span>
-      <span class="tko-chg stock-na">Loading&hellip;</span>
+      <a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="stock-link">
+        <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
+        <span class="tko-price stock-na">&#8212;</span>
+        <span class="tko-chg stock-na">Loading&hellip;</span>
+      </a>
+      <div class="stock-panel">
+        <div class="sp-header">
+          <div class="sp-company">TKO Group Holdings</div>
+          <div class="sp-sym-row"><span class="sp-sym">TKO</span><span class="sp-exch">NYSE</span></div>
+        </div>
+        <div class="sp-price-section">
+          <span class="sp-big-price stock-na">&#8212;</span>
+          <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-range-section">
+          <div class="sp-range-labels">
+            <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:center">Current<span class="sp-curr-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:right">High<span class="sp-high-lbl">&#8212;</span></div>
+          </div>
+          <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
+          <div class="sp-range-day-title">Day Range</div>
+        </div>
+        <div class="sp-grid">
+          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
+        </div>
+        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
+      </div>
     </div>
   </header>
   <div class="pg-banner" data-bg="INTERVIEWS"><p class="pg-supertitle">Exclusive Access</p><h1 class="pg-title">Interviews</h1></div>
@@ -432,7 +527,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
      PAGE: ABOUT
 ============================================================ -->
 <div id="pg-about" class="page">
-  <div class="ticker-bar"><span class="ticker-label">NPN</span><div class="ticker-track"><span class="ticker-text" id="ticker-ab">Loading...</span></div></div>
+  <div class="ticker-bar"><span class="ticker-label">BAM</span><div class="ticker-track"><span class="ticker-text" id="ticker-ab">Loading...</span></div></div>
   <header class="masthead">
     <div class="logo-wrap" id="wrap-ab">
       <button class="logo-shield-btn" id="btn-ab" aria-label="Open navigation menu">
@@ -452,7 +547,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <line x1="22" y1="40" x2="22" y2="33" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <line x1="4" y1="22" x2="11" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <circle cx="22" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.65)" stroke-width=".9"/>
-          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">NPN</text>
+          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">BAM</text>
         </svg>
         <span class="menu-label">MENU &#9662;</span>
       </button>
@@ -464,11 +559,43 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <a href="#" onclick="nav('contact');return false;">&#9993;&nbsp; Contact</a>
       </nav>
     </div>
-    <div class="wordmark"><h1>The National Press Network</h1><p>Your Premier Source for MMA Coverage</p></div>
+    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage</p></div>
     <div class="stock-tracker">
-      <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
-      <span class="tko-price stock-na">&#8212;</span>
-      <span class="tko-chg stock-na">Loading&hellip;</span>
+      <a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="stock-link">
+        <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
+        <span class="tko-price stock-na">&#8212;</span>
+        <span class="tko-chg stock-na">Loading&hellip;</span>
+      </a>
+      <div class="stock-panel">
+        <div class="sp-header">
+          <div class="sp-company">TKO Group Holdings</div>
+          <div class="sp-sym-row"><span class="sp-sym">TKO</span><span class="sp-exch">NYSE</span></div>
+        </div>
+        <div class="sp-price-section">
+          <span class="sp-big-price stock-na">&#8212;</span>
+          <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-range-section">
+          <div class="sp-range-labels">
+            <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:center">Current<span class="sp-curr-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:right">High<span class="sp-high-lbl">&#8212;</span></div>
+          </div>
+          <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
+          <div class="sp-range-day-title">Day Range</div>
+        </div>
+        <div class="sp-grid">
+          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
+        </div>
+        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
+      </div>
     </div>
   </header>
   <div class="pg-banner" data-bg="ABOUT US"><p class="pg-supertitle">Who We Are</p><h1 class="pg-title">About Us</h1></div>
@@ -495,7 +622,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
      PAGE: CONTACT
 ============================================================ -->
 <div id="pg-contact" class="page">
-  <div class="ticker-bar"><span class="ticker-label">NPN</span><div class="ticker-track"><span class="ticker-text" id="ticker-ct">Loading...</span></div></div>
+  <div class="ticker-bar"><span class="ticker-label">BAM</span><div class="ticker-track"><span class="ticker-text" id="ticker-ct">Loading...</span></div></div>
   <header class="masthead">
     <div class="logo-wrap" id="wrap-ct">
       <button class="logo-shield-btn" id="btn-ct" aria-label="Open navigation menu">
@@ -515,7 +642,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <line x1="22" y1="40" x2="22" y2="33" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <line x1="4" y1="22" x2="11" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <circle cx="22" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.65)" stroke-width=".9"/>
-          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">NPN</text>
+          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">BAM</text>
         </svg>
         <span class="menu-label">MENU &#9662;</span>
       </button>
@@ -527,11 +654,43 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <a href="#" onclick="nav('contact');return false;">&#9993;&nbsp; Contact</a>
       </nav>
     </div>
-    <div class="wordmark"><h1>The National Press Network</h1><p>Your Premier Source for MMA Coverage</p></div>
+    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage</p></div>
     <div class="stock-tracker">
-      <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
-      <span class="tko-price stock-na">&#8212;</span>
-      <span class="tko-chg stock-na">Loading&hellip;</span>
+      <a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="stock-link">
+        <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
+        <span class="tko-price stock-na">&#8212;</span>
+        <span class="tko-chg stock-na">Loading&hellip;</span>
+      </a>
+      <div class="stock-panel">
+        <div class="sp-header">
+          <div class="sp-company">TKO Group Holdings</div>
+          <div class="sp-sym-row"><span class="sp-sym">TKO</span><span class="sp-exch">NYSE</span></div>
+        </div>
+        <div class="sp-price-section">
+          <span class="sp-big-price stock-na">&#8212;</span>
+          <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-range-section">
+          <div class="sp-range-labels">
+            <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:center">Current<span class="sp-curr-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:right">High<span class="sp-high-lbl">&#8212;</span></div>
+          </div>
+          <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
+          <div class="sp-range-day-title">Day Range</div>
+        </div>
+        <div class="sp-grid">
+          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
+        </div>
+        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
+      </div>
     </div>
   </header>
   <div class="pg-banner" data-bg="CONTACT"><p class="pg-supertitle">Get In Touch</p><h1 class="pg-title">Contact Us</h1></div>
@@ -542,7 +701,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
       <div class="ct-item"><div class="ct-icon">&#128240;</div><div class="ct-detail"><strong>Press &amp; Media</strong>press@pressnetwork.org</div></div>
       <div class="ct-item"><div class="ct-icon">&#129309;</div><div class="ct-detail"><strong>Partnerships &amp; Advertising</strong>ads@pressnetwork.org</div></div>
       <div class="ct-item"><div class="ct-icon">&#129354;</div><div class="ct-detail"><strong>Interview Requests</strong>interviews@pressnetwork.org</div></div>
-      <div class="ct-item"><div class="ct-icon">&#128205;</div><div class="ct-detail"><strong>Headquarters</strong>Racine, Wisconsin</div></div>
+      <div class="ct-item"><div class="ct-icon">&#128205;</div><div class="ct-detail"><strong>Headquarters</strong>Place Holder &#8212; Address</div></div>
     </div>
     <div>
       <p class="ct-head">Send a Message</p>
@@ -594,7 +753,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <line x1="22" y1="40" x2="22" y2="33" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <line x1="4" y1="22" x2="11" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
           <circle cx="22" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.65)" stroke-width=".9"/>
-          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">NPN</text>
+          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">BAM</text>
         </svg>
         <span class="menu-label">MENU &#9662;</span>
       </button>
@@ -606,20 +765,52 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <a href="#" onclick="nav('contact');return false;">&#9993;&nbsp; Contact</a>
       </nav>
     </div>
-    <div class="wordmark"><h1>The National Press Network</h1><p>Your Premier Source for MMA Coverage</p></div>
+    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage</p></div>
     <div class="stock-tracker">
-      <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
-      <span class="tko-price stock-na">&#8212;</span>
-      <span class="tko-chg stock-na">Loading&hellip;</span>
+      <a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="stock-link">
+        <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
+        <span class="tko-price stock-na">&#8212;</span>
+        <span class="tko-chg stock-na">Loading&hellip;</span>
+      </a>
+      <div class="stock-panel">
+        <div class="sp-header">
+          <div class="sp-company">TKO Group Holdings</div>
+          <div class="sp-sym-row"><span class="sp-sym">TKO</span><span class="sp-exch">NYSE</span></div>
+        </div>
+        <div class="sp-price-section">
+          <span class="sp-big-price stock-na">&#8212;</span>
+          <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-range-section">
+          <div class="sp-range-labels">
+            <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:center">Current<span class="sp-curr-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:right">High<span class="sp-high-lbl">&#8212;</span></div>
+          </div>
+          <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
+          <div class="sp-range-day-title">Day Range</div>
+        </div>
+        <div class="sp-grid">
+          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
+        </div>
+        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
+      </div>
     </div>
   </header>
 
-  <div class="pg-banner" data-bg="ROSTER"><p class="pg-supertitle">Jack Rosenthal Presents BAM's...</p><h1 class="pg-title">Gallery of Fighters!</h1></div>
+  <div class="pg-banner" data-bg="ROSTER"><p class="pg-supertitle">Our Fighters</p><h1 class="pg-title">Fighter Roster</h1></div>
 
   <!-- Team Introduction -->
   <div class="roster-intro">
-    <h2>Our Roster</h2>
-    <p>BAM, Inc. is deeply invested in the future cultivation and success of the sport it proudly covers. Driven by this initiative, we have established an independently managed roster of emerging fighters, offering them exclusive opportunities for professional advancement through our broad media network and strong relationships across the MMA world. We are highly dedicated in this pursuit and are proud to be a trusted resource for such talented individuals.</p>
+    <h2>Our Team</h2>
+    <p>Place Holder &#8212; Team introduction text will appear here. This section explains who the BAM fighter roster is, what the team represents, its philosophy, and the caliber of competitors featured under the Boxing Access Media, Inc. banner.</p>
     <p style="margin-top:12px;font-size:14px;color:var(--muted);font-family:var(--edit);letter-spacing:1px;">Interested in joining? <a href="#" onclick="nav('contact');return false;" style="color:var(--gold);">Contact us &#8594;</a></p>
   </div>
 
@@ -628,27 +819,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 
     <div class="fighter-card">
       <div class="fighter-headshot">
-        <div class="ph-icon">&#128100;</div>
-        <span class="ph-sub">Place Holder &#8212; Headshot</span>
-      </div>
-      <div class="fighter-info">
-        <div class="fighter-name">Dorian Schneider</div>
-        <div class="fighter-stats">
-          <div class="fighter-stat">Record: <span>0&#8211;0&#8211;0</span></div>
-          <div class="fighter-stat">Division: <span>Welterweight</span></div>
-        </div>
-        <p class="fighter-bio">Dorian Schneider is a Brazilian jiujitsu blue belt. Hailing from Chicago, he currently trains under famed boxer Ben Rothwell at his Kenosha, WI gym.</p>
-        <div class="fighter-video">
-          <div class="reel-play">&#9654;</div>
-          <span class="ph-text">Place Holder &#8212; Skills Video</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="fighter-card">
-      <div class="fighter-headshot">
-        <div class="ph-icon">&#128100;</div>
-        <span class="ph-sub">Place Holder &#8212; Headshot</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
       </div>
       <div class="fighter-info">
         <div class="fighter-name">Place Holder</div>
@@ -657,17 +828,15 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="fighter-stat">Division: <span>Weight Class</span></div>
         </div>
         <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
-        <div class="fighter-video">
-          <div class="reel-play">&#9654;</div>
-          <span class="ph-text">Place Holder &#8212; Skills Video</span>
+        <div class="fighter-video-wrap">
+          <iframe src="https://www.youtube.com/embed/sOnqjkJTMaA?start=2&rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Fighter Skills Video"></iframe>
         </div>
       </div>
     </div>
 
     <div class="fighter-card">
       <div class="fighter-headshot">
-        <div class="ph-icon">&#128100;</div>
-        <span class="ph-sub">Place Holder &#8212; Headshot</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
       </div>
       <div class="fighter-info">
         <div class="fighter-name">Place Holder</div>
@@ -676,9 +845,25 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="fighter-stat">Division: <span>Weight Class</span></div>
         </div>
         <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
-        <div class="fighter-video">
-          <div class="reel-play">&#9654;</div>
-          <span class="ph-text">Place Holder &#8212; Skills Video</span>
+        <div class="fighter-video-wrap">
+          <iframe src="https://www.youtube.com/embed/sOnqjkJTMaA?start=2&rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Fighter Skills Video"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="fighter-card">
+      <div class="fighter-headshot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
+      </div>
+      <div class="fighter-info">
+        <div class="fighter-name">Place Holder</div>
+        <div class="fighter-stats">
+          <div class="fighter-stat">Record: <span>0&#8211;0&#8211;0</span></div>
+          <div class="fighter-stat">Division: <span>Weight Class</span></div>
+        </div>
+        <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
+        <div class="fighter-video-wrap">
+          <iframe src="https://www.youtube.com/embed/sOnqjkJTMaA?start=2&rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Fighter Skills Video"></iframe>
         </div>
       </div>
     </div>
@@ -689,12 +874,12 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
   <div class="sponsors-section">
     <div class="sponsors-inner">
       <div class="sponsors-title">Our Sponsors</div>
-      <div class="sponsors-sub">Proud Partners of BAM, Inc.</div>
+      <div class="sponsors-sub">Proud Partners of Boxing Access Media, Inc.</div>
       <div class="sponsors-grid">
-        <div class="sponsor-card"><div class="sponsor-icon">&#127775;</div><span class="sponsor-lbl">Place Holder &#8212; Sponsor</span></div>
-        <div class="sponsor-card"><div class="sponsor-icon">&#127775;</div><span class="sponsor-lbl">Place Holder &#8212; Sponsor</span></div>
-        <div class="sponsor-card"><div class="sponsor-icon">&#127775;</div><span class="sponsor-lbl">Place Holder &#8212; Sponsor</span></div>
-        <div class="sponsor-card"><div class="sponsor-icon">&#127775;</div><span class="sponsor-lbl">Place Holder &#8212; Sponsor</span></div>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
       </div>
     </div>
   </div>
@@ -718,7 +903,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
       </ul>
       <div class="sub-row">
         <input class="sub-input" type="email" placeholder="Enter your email address">
-        <button class="sub-btn">Subscribe</button>
+        <button class="sub-btn" onclick="closeSub()">Subscribe</button>
       </div>
       <p class="sub-fine">No spam. Unsubscribe anytime. &middot; pressnetwork.org</p>
     </div>
@@ -733,25 +918,17 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
   <div class="modal roster-modal">
     <button class="modal-x" onclick="closeRosterPopup()" style="color:rgba(255,255,255,.65)">&#10005;</button>
     <div class="roster-modal-head">
-      <div class="roster-modal-oct">
-        <svg viewBox="0 0 54 54" width="54" height="54" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="36,3 51,18 51,36 36,51 18,51 3,36 3,18 18,3" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
-          <polygon points="33,11 43,21 43,33 33,43 21,43 11,33 11,21 21,11" fill="rgba(255,255,255,.08)"/>
-          <circle cx="27" cy="27" r="7" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
-          <text x="27" y="30.5" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="8" fill="white" letter-spacing="1">NPN</text>
-        </svg>
-      </div>
-      <h2>Join The BAM Fam!</h2>
-      <p>Interested in becoming a promoted and managed MMA fighter?</p>
+      <h2>Join Our Roster</h2>
+      <p>Elite fighters wanted for BAM media representation</p>
     </div>
     <div class="roster-modal-body">
-      <p>BAM is always looking to expand its gallery of fighters. Check out some of the perks of joining our roster below.</p>
+      <p>Boxing Access Media, Inc. is actively building its fighter roster. We provide elite MMA athletes with full media coverage, professional exposure, and access to our growing platform of fight fans.</p>
       <ul>
-        <li>Professional exposure across all BAM platforms</li>
+        <li>Professional headshot &amp; biography feature on pressnetwork.org</li>
         <li>Dedicated fight highlight &amp; skills video showcase</li>
-        <li>Relaxed contract deals</li>
+        <li>Interview coverage before and after your bouts</li>
         <li>Social media promotion across all BAM channels</li>
-        <li>Sponsorship and networking opportunities!</li>
+        <li>Sponsor visibility and brand partnership opportunities</li>
       </ul>
       <button class="roster-apply-btn" onclick="nav('contact');closeRosterPopup();">Apply Now &#8594;</button>
       <span class="roster-skip" onclick="closeRosterPopup()">Maybe Later</span>
@@ -883,35 +1060,60 @@ function openRosterPopup(){ document.getElementById('roster-overlay').classList.
 function closeRosterPopup(){ document.getElementById('roster-overlay').classList.remove('show'); }
 
 /* ── TKO STOCK TRACKER ── */
-function setTKO(price, prevClose){
-  var chg = price - prevClose;
-  var pct = prevClose > 0 ? (chg / prevClose * 100) : 0;
-  var isUp = chg >= 0;
-  var sign = isUp ? '+' : '';
-  document.querySelectorAll('.tko-price').forEach(function(el){
-    el.textContent = '$' + price.toFixed(2);
-    el.className = 'tko-price ' + (isUp ? 'stock-up' : 'stock-dn');
-  });
-  document.querySelectorAll('.tko-chg').forEach(function(el){
-    el.textContent = sign + chg.toFixed(2) + ' (' + sign + pct.toFixed(2) + '%)';
-    el.className = 'tko-chg ' + (isUp ? 'stock-up' : 'stock-dn');
-  });
+function fmtVol(v){if(!v)return'N/A';if(v>1e9)return(v/1e9).toFixed(2)+'B';if(v>1e6)return(v/1e6).toFixed(2)+'M';if(v>1e3)return(v/1e3).toFixed(0)+'K';return String(v);}
+function fmtCap(v){if(!v)return'N/A';if(v>1e12)return'$'+(v/1e12).toFixed(2)+'T';if(v>1e9)return'$'+(v/1e9).toFixed(2)+'B';if(v>1e6)return'$'+(v/1e6).toFixed(2)+'M';return'$'+String(v);}
+
+function setTKO(q){
+  var price=q.regularMarketPrice, chg=q.regularMarketChange, pct=q.regularMarketChangePercent;
+  var open=q.regularMarketOpen, prev=q.regularMarketPreviousClose;
+  var high=q.regularMarketDayHigh, low=q.regularMarketDayLow;
+  var vol=q.regularMarketVolume, cap=q.marketCap;
+  var w52h=q.fiftyTwoWeekHigh, w52l=q.fiftyTwoWeekLow;
+  var isUp=chg>=0, sign=isUp?'+':'', cls=isUp?'stock-up':'stock-dn';
+  var p2=function(n){return n?'$'+n.toFixed(2):'N/A';};
+
+  /* header compact display */
+  document.querySelectorAll('.tko-price').forEach(function(el){el.textContent='$'+price.toFixed(2);el.className='tko-price '+cls;});
+  document.querySelectorAll('.tko-chg').forEach(function(el){el.textContent=sign+chg.toFixed(2)+' ('+sign+pct.toFixed(2)+'%)';el.className='tko-chg '+cls;});
+
+  /* panel: price */
+  document.querySelectorAll('.sp-big-price').forEach(function(el){el.textContent='$'+price.toFixed(2);el.className='sp-big-price '+cls;});
+  document.querySelectorAll('.sp-big-chg').forEach(function(el){el.textContent=sign+chg.toFixed(2)+' ('+sign+pct.toFixed(2)+'%)';el.className='sp-big-chg '+cls;});
+
+  /* panel: range bar */
+  var rng=high-low;
+  var barPct=rng>0?Math.min(100,Math.max(0,(price-low)/rng*100)).toFixed(1):50;
+  document.querySelectorAll('.sp-bar-fill').forEach(function(el){el.style.width=barPct+'%';});
+  document.querySelectorAll('.sp-bar-dot').forEach(function(el){el.style.left=barPct+'%';});
+  document.querySelectorAll('.sp-low-lbl').forEach(function(el){el.textContent=p2(low);});
+  document.querySelectorAll('.sp-curr-lbl').forEach(function(el){el.textContent='$'+price.toFixed(2);});
+  document.querySelectorAll('.sp-high-lbl').forEach(function(el){el.textContent=p2(high);});
+
+  /* panel: stats grid */
+  document.querySelectorAll('.sp-open').forEach(function(el){el.textContent=p2(open);});
+  document.querySelectorAll('.sp-prev').forEach(function(el){el.textContent=p2(prev);});
+  document.querySelectorAll('.sp-dayhigh').forEach(function(el){el.textContent=p2(high);});
+  document.querySelectorAll('.sp-daylow').forEach(function(el){el.textContent=p2(low);});
+  document.querySelectorAll('.sp-vol').forEach(function(el){el.textContent=fmtVol(vol);});
+  document.querySelectorAll('.sp-mktcap').forEach(function(el){el.textContent=fmtCap(cap);});
+  document.querySelectorAll('.sp-52h').forEach(function(el){el.textContent=w52h?'$'+w52h.toFixed(2):'N/A';});
+  document.querySelectorAll('.sp-52l').forEach(function(el){el.textContent=w52l?'$'+w52l.toFixed(2):'N/A';});
 }
 
 function fetchTKO(){
-  var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(
-    'https://query1.finance.yahoo.com/v7/finance/quote?symbols=TKO&fields=regularMarketPrice,regularMarketChange,regularMarketChangePercent'
-  );
-  fetch(proxyUrl)
-    .then(function(r){ return r.json(); })
+  var fields='regularMarketPrice,regularMarketChange,regularMarketChangePercent,regularMarketOpen,regularMarketPreviousClose,regularMarketDayHigh,regularMarketDayLow,regularMarketVolume,marketCap,fiftyTwoWeekHigh,fiftyTwoWeekLow';
+  var url='https://query1.finance.yahoo.com/v7/finance/quote?symbols=TKO&fields='+fields;
+  fetch('https://api.allorigins.win/get?url='+encodeURIComponent(url))
+    .then(function(r){return r.json();})
     .then(function(j){
-      var d = JSON.parse(j.contents);
-      var q = d.quoteResponse.result[0];
-      setTKO(q.regularMarketPrice, q.regularMarketPrice - q.regularMarketChange);
+      var q=JSON.parse(j.contents).quoteResponse.result[0];
+      setTKO(q);
     })
     .catch(function(){
-      document.querySelectorAll('.tko-price').forEach(function(el){ el.textContent = 'N/A'; el.className='tko-price stock-na'; });
-      document.querySelectorAll('.tko-chg').forEach(function(el){ el.textContent = 'Market data unavailable'; el.className='tko-chg stock-na'; });
+      document.querySelectorAll('.tko-price').forEach(function(el){el.textContent='N/A';el.className='tko-price stock-na';});
+      document.querySelectorAll('.tko-chg').forEach(function(el){el.textContent='Unavailable';el.className='tko-chg stock-na';});
+      document.querySelectorAll('.sp-big-price').forEach(function(el){el.textContent='N/A';});
+      document.querySelectorAll('.sp-big-chg').forEach(function(el){el.textContent='Market data unavailable';});
     });
 }
 
