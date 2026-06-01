@@ -131,7 +131,177 @@
 </div><!-- /pg-roster -->
 
 
-<!-- ============================
+
+
+
+
+
+
+
+OFFICIAL CODE BELOW!!!
+
+
+
+
+
+<!-- ============================================================
+     PAGE: ROSTER
+============================================================ -->
+<div id="pg-roster" class="page">
+  <div class="ticker-bar"><span class="ticker-label">Roster</span><div class="ticker-track"><span class="ticker-text" id="ticker-roster">Loading...</span></div></div>
+  <header class="masthead">
+    <div class="logo-wrap" id="wrap-roster">
+      <button class="logo-shield-btn" id="btn-roster" aria-label="Open navigation menu">
+        <svg class="npn-oct-svg" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="30,4 40,14 40,30 30,40 14,40 4,30 4,14 14,4" fill="#5a0000" stroke="#D91A1A" stroke-width="1.2"/>
+          <polygon points="27,11 33,17 33,27 27,33 17,33 11,27 11,17 17,11" fill="#D91A1A"/>
+          <line x1="30" y1="4" x2="27" y2="11" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="40" y1="14" x2="33" y2="17" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="40" y1="30" x2="33" y2="27" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="30" y1="40" x2="27" y2="33" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="14" y1="40" x2="17" y2="33" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="4" y1="30" x2="11" y2="27" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="4" y1="14" x2="11" y2="17" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="14" y1="4" x2="17" y2="11" stroke="rgba(255,255,255,.65)" stroke-width="1.1"/>
+          <line x1="22" y1="4" x2="22" y2="11" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
+          <line x1="40" y1="22" x2="33" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
+          <line x1="22" y1="40" x2="22" y2="33" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
+          <line x1="4" y1="22" x2="11" y2="22" stroke="rgba(255,255,255,.3)" stroke-width=".7"/>
+          <circle cx="22" cy="22" r="5.5" fill="none" stroke="rgba(255,255,255,.65)" stroke-width=".9"/>
+          <text x="22" y="24.8" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="5.5" fill="white" letter-spacing=".5">BAM</text>
+        </svg>
+        <span class="menu-label">MENU &#9662;</span>
+      </button>
+      <nav class="nav-dropdown" id="menu-roster">
+        <a href="#" onclick="nav('home');return false;">&#127968;&nbsp; Home</a>
+        <a href="#" onclick="nav('interviews');return false;">&#129354;&nbsp; Interviews</a>
+        <a href="#" onclick="nav('roster');return false;">&#128101;&nbsp; Roster</a>
+        <a href="#" onclick="nav('about');return false;">&#128240;&nbsp; About Us</a>
+        <a href="#" onclick="nav('contact');return false;">&#9993;&nbsp; Contact</a>
+      </nav>
+    </div>
+    <div class="wordmark"><h1>Boxing Access Media, Inc.</h1><p>Your Premier Source for MMA Coverage</p></div>
+    <div class="stock-tracker">
+      <a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="stock-link">
+        <div class="stock-top"><span class="stock-sym">TKO</span><span class="stock-exch">NYSE</span></div>
+        <span class="tko-price stock-na">&#8212;</span>
+        <span class="tko-chg stock-na">Loading&hellip;</span>
+      </a>
+      <div class="stock-panel">
+        <div class="sp-header">
+          <div class="sp-company">TKO Group Holdings</div>
+          <div class="sp-sym-row"><span class="sp-sym">TKO</span><span class="sp-exch">NYSE</span></div>
+        </div>
+        <div class="sp-price-section">
+          <span class="sp-big-price stock-na">&#8212;</span>
+          <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-range-section">
+          <div class="sp-range-labels">
+            <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:center">Current<span class="sp-curr-lbl">&#8212;</span></div>
+            <div class="sp-range-lbl-item" style="text-align:right">High<span class="sp-high-lbl">&#8212;</span></div>
+          </div>
+          <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
+          <div class="sp-range-day-title">Day Range</div>
+        </div>
+        <div class="sp-grid">
+          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
+          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
+        </div>
+        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="pg-banner" data-bg="ROSTER"><p class="pg-supertitle">Jack Rosenthal Presents BAM's...</p><h1 class="pg-title">Gallery Of Fighters!</h1></div>
+
+  <!-- Team Introduction -->
+  <div class="roster-intro">
+    <h2>Our Roster</h2>
+    <p>BAM, Inc. is deeply invested in the future cultivation and success of the sport it proudly covers. Driven by this initiative, we have established an independently managed roster of emerging fighters, offering them exclusive opportunities for professional advancement through our broad media network and strong relationships across the MMA world. We are highly dedicated in this pursuit and are proud to be a trusted resource for such talented individuals.</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--muted);font-family:var(--edit);letter-spacing:1px;">Interested in joining? <a href="#" onclick="nav('contact');return false;" style="color:var(--gold);">Contact us &#8594;</a></p>
+  </div>
+
+  <!-- Fighter Grid -->
+  <div class="fighter-grid">
+
+    <div class="fighter-card">
+      <div class="fighter-headshot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
+      </div>
+      <div class="fighter-info">
+        <div class="fighter-name">Donald Trump</div>
+        <div class="fighter-stats">
+          <div class="fighter-stat">Record: <span>0&#8211;0&#8211;0</span></div>
+          <div class="fighter-stat">Division: <span>Weight Class</span></div>
+        </div>
+        <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
+        <div class="fighter-video-wrap">
+          <iframe src="https://www.youtube.com/embed/sOnqjkJTMaA?start=2&rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Fighter Skills Video"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="fighter-card">
+      <div class="fighter-headshot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
+      </div>
+      <div class="fighter-info">
+        <div class="fighter-name">Place Holder</div>
+        <div class="fighter-stats">
+          <div class="fighter-stat">Record: <span>0&#8211;0&#8211;0</span></div>
+          <div class="fighter-stat">Division: <span>Weight Class</span></div>
+        </div>
+        <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
+        <div class="fighter-video-wrap">
+          <iframe src="https://www.youtube.com/embed/sOnqjkJTMaA?start=2&rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Fighter Skills Video"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="fighter-card">
+      <div class="fighter-headshot">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
+      </div>
+      <div class="fighter-info">
+        <div class="fighter-name">Place Holder</div>
+        <div class="fighter-stats">
+          <div class="fighter-stat">Record: <span>0&#8211;0&#8211;0</span></div>
+          <div class="fighter-stat">Division: <span>Weight Class</span></div>
+        </div>
+        <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
+        <div class="fighter-video-wrap">
+          <iframe src="https://www.youtube.com/embed/sOnqjkJTMaA?start=2&rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Fighter Skills Video"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /fighter-grid -->
+
+  <!-- Sponsors Section -->
+  <div class="sponsors-section">
+    <div class="sponsors-inner">
+      <div class="sponsors-title">Our Sponsors</div>
+      <div class="sponsors-sub">Proud Partners of Boxing Access Media, Inc.</div>
+      <div class="sponsors-grid">
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+        <a class="sponsor-card" href="https://www.whitehouse.gov/administration/donald-j-trump/" target="_blank" rel="noopener"><img src="https://static.vecteezy.com/system/resources/previews/010/930/001/non_2x/google-logo-icon-illustration-free-vector.jpg" alt="Sponsor Logo" class="sponsor-img"></a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /pg-roster -->
+
+
 
 
 
