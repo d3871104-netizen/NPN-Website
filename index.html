@@ -82,6 +82,29 @@ a{text-decoration:none;color:inherit;}
 .sp-bar-fill{position:absolute;left:0;top:0;height:100%;background:var(--red);border-radius:2px;transition:width .6s ease;}
 .sp-bar-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;background:var(--white);border:2px solid var(--red);border-radius:50%;transition:left .6s ease;}
 .sp-range-day-title{font-family:var(--edit);font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-top:4px;}
+.sp-chart-section{border-bottom:1px solid var(--border);}
+.sp-canvas{display:block;width:100%;height:60px;cursor:default;background:var(--deep);}
+.sp-chart-lbl{font-family:var(--edit);font-size:8px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;text-align:right;padding:3px 16px 6px;}
+/* ARTICLE MODAL */
+.article-modal{width:min(720px,94vw);max-height:88vh;display:flex;flex-direction:column;}
+.art-modal-inner{overflow-y:auto;padding:36px 40px;}
+.art-modal-inner::-webkit-scrollbar{width:4px;}
+.art-modal-inner::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.art-meta{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+.art-cat-badge{font-family:var(--edit);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;}
+.art-date-str{font-family:var(--edit);font-size:11px;color:var(--muted);letter-spacing:1px;}
+.art-headline{font-family:var(--disp);font-size:clamp(22px,3.5vw,38px);letter-spacing:2px;color:var(--white);line-height:1.1;margin-bottom:12px;}
+.art-byline{font-family:var(--edit);font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.art-body p{font-family:var(--body);font-size:15px;line-height:1.85;color:rgba(244,241,236,.82);margin-bottom:16px;}
+.art-body blockquote{border-left:3px solid var(--red);padding:10px 18px;margin:20px 0;background:var(--card);}
+.art-body blockquote p{color:var(--gold);font-style:italic;margin:0;}
+/* CLICKABLE CARDS */
+.feat-card-link{cursor:pointer;}
+.feat-card-link:hover .feat-hl{color:var(--gold);}
+.feat-card-link:hover{border-color:rgba(217,26,26,.45)!important;}
+.s-card-link{cursor:pointer;}
+.s-card-link:hover .s-title{color:var(--gold);}
+.s-card-link:hover{border-color:rgba(217,26,26,.4)!important;}
 .sp-grid{display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;gap:0;border-bottom:1px solid var(--border);}
 .sp-stat{padding:5px 0;border-bottom:1px solid rgba(29,33,51,.6);display:flex;flex-direction:column;gap:2px;}
 .sp-stat:nth-last-child(-n+2){border-bottom:none;}
@@ -341,6 +364,10 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <span class="sp-big-price stock-na">&#8212;</span>
           <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
         </div>
+        <div class="sp-chart-section">
+          <canvas class="sp-canvas" height="60"></canvas>
+          <div class="sp-chart-lbl">Today&#39;s Intraday · 5-min intervals</div>
+        </div>
         <div class="sp-range-section">
           <div class="sp-range-labels">
             <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
@@ -392,18 +419,21 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
     <div class="s-gap">
       <div class="s-head"><h2>Latest Coverage</h2><a href="#">View All &#8594;</a></div>
       <div class="two-col">
-        <div class="feat-card">
-          <div class="feat-media"><span>Place Holder &#8212; Featured Media</span></div>
-          <p class="feat-tag">Feature</p>
-          <h3 class="feat-hl">Place Holder &#8212; Article Headline</h3>
-          <p class="feat-body">Place Holder &#8212; Article excerpt and summary text will appear here.</p>
+        <div class="feat-card feat-card-link" onclick="openArticle(0)" style="border:1px solid var(--border);">
+          <div class="feat-media" style="background:linear-gradient(135deg,#0a0c12,#1a0a0a);position:relative;">
+            <span style="font-size:52px;opacity:.15;">&#127968;</span>
+            <div style="position:absolute;bottom:10px;left:14px;font-family:var(--edit);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">June 1, 2026</div>
+          </div>
+          <p class="feat-tag" style="color:var(--red);">Breaking</p>
+          <h3 class="feat-hl">&#8220;The Claw&#8221; Looms Over the Briefing Room: UFC Construction Sparks White House Press Confrontation</h3>
+          <p class="feat-body">The UFC&#8217;s massive Belgian-built lighting structure has grown tall enough to be seen towering over the White House briefing room&#8217;s roof, triggering heated exchanges between reporters and press officials during Monday&#8217;s daily briefing. Click to read the full story.</p>
         </div>
         <div class="sidebar">
-          <div class="s-card"><div class="s-thumb">Img</div><div><p class="s-badge" style="color:var(--red)">Breaking</p><p class="s-title">Place Holder &#8212; Story Title</p></div></div>
-          <div class="s-card"><div class="s-thumb">Img</div><div><p class="s-badge" style="color:var(--muted)">Fight Night</p><p class="s-title">Place Holder &#8212; Story Title</p></div></div>
-          <div class="s-card"><div class="s-thumb">Img</div><div><p class="s-badge" style="color:var(--gold)">Exclusive</p><p class="s-title">Place Holder &#8212; Story Title</p></div></div>
-          <div class="s-card"><div class="s-thumb">Img</div><div><p class="s-badge" style="color:var(--muted)">Rankings</p><p class="s-title">Place Holder &#8212; Story Title</p></div></div>
-          <div class="s-card"><div class="s-thumb">Img</div><div><p class="s-badge" style="color:var(--muted)">Analysis</p><p class="s-title">Place Holder &#8212; Story Title</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(1)"><div class="s-thumb" style="font-size:20px;color:rgba(217,26,26,.4)">&#129354;</div><div><p class="s-badge" style="color:var(--red)">Breaking</p><p class="s-title">Makhachev Targets August Return, Names Ian Garry as Top Challenger</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(2)"><div class="s-thumb" style="font-size:20px;color:rgba(201,168,76,.4)">&#127942;</div><div><p class="s-badge" style="color:var(--gold)">Contender</p><p class="s-title">Tsarukyan: &#8216;I&#8217;m Next&#8217; &#8212; Armenian Star Calls His Shot After White House Card</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(3)"><div class="s-thumb" style="font-size:20px;color:rgba(201,168,76,.4)">&#128683;</div><div><p class="s-badge" style="color:var(--gold)">Exclusive</p><p class="s-title">Topuria: &#8216;The UFC Doesn&#8217;t Want to Make&#8217; the Makhachev Superfight</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(4)"><div class="s-thumb" style="font-size:20px;color:rgba(129,135,153,.4)">&#127358;</div><div><p class="s-badge" style="color:var(--muted)">Feature</p><p class="s-title">Dana White: UFC Is Paying the Full $60M for the White House Card</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(5)"><div class="s-thumb" style="font-size:20px;color:rgba(34,197,94,.35)">&#128200;</div><div><p class="s-badge" style="color:#22c55e">Finance</p><p class="s-title">TKO Beats Estimates With $1.6B Revenue Quarter, Raises Full-Year Guidance</p></div></div>
         </div>
       </div>
     </div>
@@ -485,6 +515,10 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <div class="sp-price-section">
           <span class="sp-big-price stock-na">&#8212;</span>
           <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-chart-section">
+          <canvas class="sp-canvas" height="60"></canvas>
+          <div class="sp-chart-lbl">Today&#39;s Intraday · 5-min intervals</div>
         </div>
         <div class="sp-range-section">
           <div class="sp-range-labels">
@@ -574,6 +608,10 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <div class="sp-price-section">
           <span class="sp-big-price stock-na">&#8212;</span>
           <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-chart-section">
+          <canvas class="sp-canvas" height="60"></canvas>
+          <div class="sp-chart-lbl">Today&#39;s Intraday · 5-min intervals</div>
         </div>
         <div class="sp-range-section">
           <div class="sp-range-labels">
@@ -669,6 +707,10 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <div class="sp-price-section">
           <span class="sp-big-price stock-na">&#8212;</span>
           <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
+        </div>
+        <div class="sp-chart-section">
+          <canvas class="sp-canvas" height="60"></canvas>
+          <div class="sp-chart-lbl">Today&#39;s Intraday · 5-min intervals</div>
         </div>
         <div class="sp-range-section">
           <div class="sp-range-labels">
@@ -781,6 +823,10 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <span class="sp-big-price stock-na">&#8212;</span>
           <span class="sp-big-chg stock-na">Loading market data&hellip;</span>
         </div>
+        <div class="sp-chart-section">
+          <canvas class="sp-canvas" height="60"></canvas>
+          <div class="sp-chart-lbl">Today&#39;s Intraday · 5-min intervals</div>
+        </div>
         <div class="sp-range-section">
           <div class="sp-range-labels">
             <div class="sp-range-lbl-item">Low<span class="sp-low-lbl">&#8212;</span></div>
@@ -805,7 +851,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
     </div>
   </header>
 
-  <div class="pg-banner" data-bg="ROSTER"><p class="pg-supertitle">Jack Rosenthal Presents BAM's...</p><h1 class="pg-title">Gallery Of Fighters!</h1></div>
+  <div class="pg-banner" data-bg="ROSTER"><p class="pg-supertitle">Jack Rosenthal Presents BAM's...</p><h1 class="pg-title">Gallery of Fighters!</h1></div>
 
   <!-- Team Introduction -->
   <div class="roster-intro">
@@ -822,7 +868,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg/500px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29_%28cropped%29%282%29.jpg" alt="Fighter Headshot">
       </div>
       <div class="fighter-info">
-        <div class="fighter-name">Donald Trump</div>
+        <div class="fighter-name">Place Holder</div>
         <div class="fighter-stats">
           <div class="fighter-stat">Record: <span>0&#8211;0&#8211;0</span></div>
           <div class="fighter-stat">Division: <span>Weight Class</span></div>
@@ -888,6 +934,24 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 
 
 <!-- ============================================================
+     ARTICLE MODAL
+============================================================ -->
+<div id="article-overlay" class="overlay" onclick="if(event.target===this)closeArticle()">
+  <div class="modal article-modal">
+    <button class="modal-x" onclick="closeArticle()" style="top:18px;right:18px;">&#10005;</button>
+    <div class="art-modal-inner">
+      <div class="art-meta">
+        <span class="art-cat-badge" id="art-cat" style="background:var(--red);color:#fff;">Breaking</span>
+        <span class="art-date-str" id="art-date">Date</span>
+      </div>
+      <h2 class="art-headline" id="art-title">Headline</h2>
+      <div class="art-byline">BAM News Desk &nbsp;&middot;&nbsp; Boxing Access Media, Inc.</div>
+      <div class="art-body" id="art-body"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
      POPUP: SUBSCRIBE
 ============================================================ -->
 <div id="sub-overlay" class="overlay" onclick="if(event.target===this)closeSub()">
@@ -918,17 +982,17 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
   <div class="modal roster-modal">
     <button class="modal-x" onclick="closeRosterPopup()" style="color:rgba(255,255,255,.65)">&#10005;</button>
     <div class="roster-modal-head">
-      <h2>Join Our Roster</h2>
-      <p>Elite fighters wanted for BAM media representation</p>
+      <h2>Join the Bam Fam!</h2>
+      <p>Interested in becoming a promoted and managed MMA fighter?</p>
     </div>
     <div class="roster-modal-body">
-      <p>Boxing Access Media, Inc. is actively building its fighter roster. We provide elite MMA athletes with full media coverage, professional exposure, and access to our growing platform of fight fans.</p>
+      <p>BAM is always looking to expand its gallery of fighters. Check out some of the perks of joining our roster below...</p>
       <ul>
-        <li>Professional headshot &amp; biography feature on pressnetwork.org</li>
+        <li>Professional exposure across all BAM platforms</li>
         <li>Dedicated fight highlight &amp; skills video showcase</li>
-        <li>Interview coverage before and after your bouts</li>
+        <li>Relaxed contract deals</li>
         <li>Social media promotion across all BAM channels</li>
-        <li>Sponsor visibility and brand partnership opportunities</li>
+        <li>Sponsorship and networking opportunities!</li>
       </ul>
       <button class="roster-apply-btn" onclick="nav('contact');closeRosterPopup();">Apply Now &#8594;</button>
       <span class="roster-skip" onclick="closeRosterPopup()">Maybe Later</span>
@@ -1117,8 +1181,155 @@ function fetchTKO(){
     });
 }
 
+/* ── TKO INTRADAY SPARKLINE ── */
+function drawSparkline(closes, isUp) {
+  var pts = closes.filter(function(v){ return v !== null && v !== undefined && !isNaN(v); });
+  if (pts.length < 2) return;
+  var color = isUp ? '#22c55e' : '#ef4444';
+  var min = Math.min.apply(null, pts);
+  var max = Math.max.apply(null, pts);
+  var range = (max - min) || 0.01;
+  document.querySelectorAll('.sp-canvas').forEach(function(canvas) {
+    var W = 258, H = 60, pad = 5;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, W, H);
+    // dark background
+    ctx.fillStyle = '#0D0F16';
+    ctx.fillRect(0, 0, W, H);
+    // subtle horizontal grid lines
+    ctx.strokeStyle = 'rgba(29,33,51,0.9)';
+    ctx.lineWidth = 0.5;
+    [0.25, 0.5, 0.75].forEach(function(f) {
+      ctx.beginPath(); ctx.moveTo(0, H * f); ctx.lineTo(W, H * f); ctx.stroke();
+    });
+    // open price dashed baseline
+    var openY = pad + (1 - (pts[0] - min) / range) * (H - pad * 2);
+    ctx.beginPath(); ctx.moveTo(0, openY); ctx.lineTo(W, openY);
+    ctx.strokeStyle = 'rgba(255,255,255,0.13)';
+    ctx.lineWidth = 0.8;
+    ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]);
+    // gradient fill under line
+    var grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, isUp ? 'rgba(34,197,94,0.28)' : 'rgba(239,68,68,0.28)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    var step = (W - pad * 2) / (pts.length - 1);
+    ctx.beginPath();
+    pts.forEach(function(v, i) {
+      var x = pad + i * step;
+      var y = pad + (1 - (v - min) / range) * (H - pad * 2);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.lineTo(pad + (pts.length - 1) * step, H);
+    ctx.lineTo(pad, H);
+    ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+    // price line
+    ctx.beginPath();
+    pts.forEach(function(v, i) {
+      var x = pad + i * step;
+      var y = pad + (1 - (v - min) / range) * (H - pad * 2);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+    ctx.lineJoin = 'round'; ctx.stroke();
+    // glowing end dot
+    var lx = pad + (pts.length - 1) * step;
+    var ly = pad + (1 - (pts[pts.length - 1] - min) / range) * (H - pad * 2);
+    ctx.beginPath(); ctx.arc(lx, ly, 4.5, 0, Math.PI * 2);
+    ctx.fillStyle = isUp ? 'rgba(34,197,94,0.25)' : 'rgba(239,68,68,0.25)';
+    ctx.fill();
+    ctx.beginPath(); ctx.arc(lx, ly, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = color; ctx.fill();
+  });
+}
+
+function fetchTKOChart() {
+  var url = 'https://query1.finance.yahoo.com/v8/finance/chart/TKO?range=1d&interval=5m&includePrePost=false';
+  fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(url))
+    .then(function(r) { return r.json(); })
+    .then(function(j) {
+      var data = JSON.parse(j.contents);
+      if (!data.chart || !data.chart.result || !data.chart.result[0]) throw new Error('no data');
+      var closes = data.chart.result[0].indicators.quote[0].close;
+      var valid = closes.filter(function(v){ return v !== null && v !== undefined; });
+      if (valid.length < 2) throw new Error('insufficient data');
+      drawSparkline(closes, valid[valid.length - 1] >= valid[0]);
+    })
+    .catch(function() {
+      document.querySelectorAll('.sp-canvas').forEach(function(c) {
+        c.width = 258; c.height = 60;
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#0D0F16'; ctx.fillRect(0, 0, 258, 60);
+        ctx.fillStyle = '#818799';
+        ctx.font = '500 10px Oswald,sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Intraday chart unavailable', 129, 33);
+      });
+    });
+}
+
 fetchTKO();
+fetchTKOChart();
 setInterval(fetchTKO, 60000);
+setInterval(fetchTKOChart, 300000);
+
+/* ── ARTICLE SYSTEM ── */
+var ARTICLES = [
+  {
+    cat:'Breaking', catBg:'var(--red)', catColor:'#fff',
+    date:'June 1, 2026',
+    headline:'"The Claw" Looms Over the Briefing Room: UFC Construction Sparks White House Press Confrontation',
+    body:'<p>Just thirteen days before UFC Freedom 250 is scheduled to throw its first punch on the South Lawn, the sprawling fight-week infrastructure surrounding the White House has become impossible to ignore \u2014 including for the reporters who work steps away inside the briefing room. On Monday, June 1, images circulated widely on social media showing the tip of "The Claw" \u2014 the UFC\'s custom Belgian-built lighting grid \u2014 now visible above the roofline of the briefing room itself, prompting an unexpected flurry of confrontational questions during the daily White House press briefing.</p><p>Press corps members peppered press officials with pointed questions about the $60 million production taking shape on the public grounds, demanding specifics on crowd-control plans, Secret Service coordination, and whether any taxpayer resources were being quietly diverted to support the event. The back-and-forth grew heated at points, with one reporter calling the construction "the most expensive birthday decoration in American history."</p><blockquote><p>"You know, I have nothing to say about this guy. We were doing an interview earlier, this guy just goes right by me, starts saying things." \u2014 Alex Pereira, responding to a tirade at an earlier UFC White House press conference</p></blockquote><p>UFC CEO Dana White had already addressed these concerns in a Time magazine interview days earlier, insisting no public money was funding the event. "This is basically me spending a s\u2014tload of money to celebrate the 250th birthday of America," White said. "I love this country like anybody on the left loves this country. I love this country like anybody on the right."</p><p>The Claw itself was fabricated at an undisclosed facility in Belgium, shipped to Philadelphia for testing, torn down and trucked to Washington in pieces. UFC workers have been constructing the venue around the clock. Weigh-ins are set for the Lincoln Memorial, a Zac Brown Band concert is planned for the eve of the event, and a massive Fan Fest will stretch across the Ellipse for the tens of thousands who could not secure seats on the South Lawn. The main event features a lightweight title unification bout between champion Ilia Topuria and interim titleholder Justin Gaethje.</p>'
+  },
+  {
+    cat:'Breaking', catBg:'var(--red)', catColor:'#fff',
+    date:'June 1, 2026',
+    headline:'Makhachev Targets August Return, Names Ian Garry as Preferred Challenger',
+    body:'<p>UFC welterweight champion Islam Makhachev broke his public silence on his return timeline on Sunday, telling reporters he intends to head straight to training camp and be ready to compete by August. The Dagestani fighter was speaking at the UEFA Champions League final in Budapest, Hungary \u2014 where he watched PSG edge Arsenal \u2014 before fielding questions from UFC on TNT Sports.</p><p>"Right after here I am going to camp," Makhachev said. "[Return likely in] August. I will be ready. Lot of contenders but No. 1 is Ian Garry. We still have a couple more who want to take the belt but I don\u2019t give no one [a chance]."</p><blockquote><p>"There are a lot of contenders, but number one is Ian Machado Garry." \u2014 Islam Makhachev</p></blockquote><p>Makhachev (28\u20131) captured the UFC welterweight title in November 2025, defeating Jack Della Maddalena by unanimous decision at UFC 322 at Madison Square Garden. It was a historic achievement, making him one of a small number of fighters to hold UFC gold in two weight classes. He has not competed since.</p><p>Ian Machado Garry (17\u20131) has been widely considered the division\'s top contender after defeating Belal Muhammad in Qatar in late 2025. However, Garry\u2019s lone career blemish \u2014 a loss to Shavkat Rakhmonov at UFC 310 \u2014 adds intrigue to the division\u2019s pecking order. Makhachev was linked to a superfight with lightweight champion Ilia Topuria for the UFC White House card on June 14, but Dana White cited a hand injury as the reason the Dagestani was unable to compete, a claim Makhachev partially disputed in the weeks that followed. The August timeline now appears to be the confirmed target for the welterweight king\'s return.</p>'
+  },
+  {
+    cat:'Contender', catBg:'var(--card)', catColor:'var(--gold)',
+    date:'June 1, 2026',
+    headline:'Tsarukyan: "My Next Fight Is the Title Fight" \u2014 Armenian Star Calls Shot After White House Card',
+    body:'<p>Arman Tsarukyan is making no secret of what comes next. The Armenian contender \u2014 officially named as the backup fighter for the Ilia Topuria vs. Justin Gaethje lightweight title unification bout at UFC Freedom 250 on June 14 \u2014 stated emphatically on his YouTube channel on Sunday that a championship fight awaits him in the fall, regardless of which fighter walks out of the White House with the belt.</p><p>"I am waiting for the White House card, when they are going to fight," Tsarukyan said. "And then they are going to announce my next fight, probably September, October, or end of this year. My next fight is the title fight, which is probably in September in L.A."</p><blockquote><p>"If it is Ilia, probably the end of this year. If it is Gaethje, probably September or October." \u2014 Arman Tsarukyan</p></blockquote><p>Tsarukyan (27\u20132 in MMA) has been the division\u2019s most persistent contender for the better part of two years. He secured his mandatory position by defeating Charles Oliveira in a close split decision at UFC 300 in April 2024. Since then, his title shot has been repeatedly delayed \u2014 first by a back injury that forced him out of a January 2025 bout with Makhachev, and then by the UFC\'s decision to book an interim title fight between Paddy Pimblett and Justin Gaethje rather than give Tsarukyan the call.</p><p>The 27\u2013year\u2013old was back in action on Saturday at Real American Freestyle 9, dominating Keelon Jimison by technical fall. He also has bouts against Tony Ferguson and Colby Covington booked in the RAF grappling series. Despite the distractions, Tsarukyan has made it clear his eyes remain on the lightweight throne. His manager echoed the sentiment: "If Arman is not asked to step in on June 14, we expect him to challenge for the lightweight title in the fall, or at worst, before the end of 2026."</p>'
+  },
+  {
+    cat:'Exclusive', catBg:'var(--card)', catColor:'var(--gold)',
+    date:'May 27, 2026',
+    headline:'Topuria: "The UFC Doesn\'t Want to Make" the Makhachev Superfight',
+    body:'<p>Ilia Topuria dropped a bombshell on the MMA world on Tuesday, publicly placing the blame for the collapse of his long-discussed superfight with Islam Makhachev squarely on the UFC itself. Speaking on the DeepCut podcast with VicBlends, the undefeated two-division champion was unusually candid about his belief that the promotion has been the primary obstacle preventing what he called "one of the biggest fights in UFC history."</p><p>"I don\'t think that it is because of him that the fight is not happening," Topuria said of Makhachev. "I truly believe that the UFC doesn\'t want to make it happen."</p><blockquote><p>"If you do me and Islam, it will be one of the biggest fights in UFC history without any doubt." \u2014 Ilia Topuria</p></blockquote><p>The Makhachev superfight had been openly discussed as a potential main event for UFC Freedom 250 at the White House on June 14, before falling through completely. Dana White publicly attributed Makhachev\u2019s absence from the card to a hand injury. Instead, Topuria will defend his lightweight title against interim champion Justin Gaethje in the event\'s headliner, while Makhachev is expected to return in August to defend his welterweight title, most likely against Ian Machado Garry.</p><p>Despite the frustration in his words, Topuria was careful to speak highly of Makhachev. "He is a double champ like me, and I have nothing personal against him. He has achieved great things in the sport." The Spanish\u2013Georgian champion also made clear that his legacy does not hinge on the bout ever being made. "For me personally, it wouldn\'t change anything if that fight doesn\'t happen. I don\'t need Islam to feel realized or proud about myself." The comments have reignited debate in the MMA community about whether the UFC is deliberately avoiding a fight that could overshadow its other business interests.</p>'
+  },
+  {
+    cat:'Feature', catBg:'var(--card)', catColor:'var(--muted)',
+    date:'May 26, 2026',
+    headline:'Dana White: UFC Is Spending $60 Million on the White House Fight \u2014 Every Dollar of It',
+    body:'<p>In his most detailed public account yet of the logistics behind UFC Freedom 250, Dana White sat for a wide\u2013ranging interview with Time magazine on Monday, explaining how a conversation at ringside at UFC 309 in November 2024 turned into the most expensive single fight event in the promotion\'s history. The answer, White insisted, involves no taxpayer money whatsoever.</p><p>"This is basically me spending a s\u2014tload of money to celebrate the 250th birthday of America," White told Time. "I love this country like anybody on the left loves this country. I love this country like anybody on the right loves this country." The estimated production cost for the June 14 event on the White House South Lawn now stands at roughly $60 million, according to multiple reports.</p><blockquote><p>"The White House fight is on. We got it done." \u2014 Dana White, August 2025 Instagram Live</p></blockquote><p>White traced the origins of the event to a moment right after Trump\'s re\u2013election in November 2024. The president leaned over to White during the MSG fight and suggested a White House card. Planning formally commenced in February 2025, with UFC staffers making more than a dozen trips to Washington in subsequent months. The custom fighting venue \u2014 including a towering overhead lighting grid dubbed "The Claw" \u2014 was fabricated in Belgium, tested in Philadelphia, disassembled and trucked to Washington.</p><p>Ticket distribution has divided approximately one\u2013third of the South Lawn seats among military families, one\u2013third for White House staff and their families, and a final third for VIPs. An additional Ellipse\u2013side Fan Fest, with large screens projecting the event, will accommodate tens of thousands more. White confirmed the card will be headlined by a lightweight title unification bout between champion Ilia Topuria and interim title holder Justin Gaethje, with a co\u2013main of Alex Pereira challenging for the interim heavyweight belt against Ciryl Gane.</p>'
+  },
+  {
+    cat:'Finance', catBg:'rgba(34,197,94,.15)', catColor:'#22c55e',
+    date:'May 6, 2026',
+    headline:'TKO Beats Wall Street Estimates With $1.6 Billion Quarter, Raises Full-Year Guidance',
+    body:'<p>TKO Group Holdings, the publicly listed parent company of UFC and WWE, reported a strong first\u2013quarter 2026 earnings beat on Wednesday, posting revenue of $1.6 billion against analyst forecasts of approximately $1.59 billion. Earnings per share came in at $1.12, topping the consensus estimate of $0.91. The results sent the stock higher in after\u2013hours trading.</p><p>CEO Ariel Emanuel attributed the performance to the continued strength of both UFC and WWE content, as well as the early\u2013stage benefits of TKO\'s landmark $7.7 billion, seven\u2013year media\u2013rights deal with Paramount+, which shifted the UFC away from a traditional pay\u2013per\u2013view model at the start of 2026 and toward a broader streaming distribution framework. The shift has been widely seen as a major driver of subscriber growth for Paramount+.</p><blockquote><p>"TKO is off to a good start... both UFC and WWE delivering solid financial results." \u2014 Ariel Emanuel, TKO CEO</p></blockquote><p>On the back of the Q1 results, TKO raised its full\u2013year 2026 guidance, projecting revenue in the range of $5.68 billion to $5.78 billion. The figures represent a meaningful step up from 2025\'s reported annual revenue of $4.735 billion. Adjusted EBITDA for the full year is now targeted at $2.24 billion to $2.29 billion, implying roughly 21 percent revenue growth year\u2013over\u2013year and approximately 43 percent EBITDA growth.</p><p>Analysts noted the upcoming UFC Freedom 250 White House event on June 14 as an additional potential catalyst for brand visibility and advertising revenue in Q2. The company also has an active share repurchase program underway, with management having already bought back roughly $900 million in stock during 2025, and intending to repurchase up to an additional $1 billion. A quarterly cash dividend of $0.38 per Class\u2013A share was paid in late 2025 and is expected to continue.</p>'
+  }
+];
+
+function openArticle(idx) {
+  var art = ARTICLES[idx];
+  if (!art) return;
+  document.getElementById('art-cat').textContent = art.cat;
+  document.getElementById('art-cat').style.background = art.catBg;
+  document.getElementById('art-cat').style.color = art.catColor;
+  document.getElementById('art-date').textContent = art.date;
+  document.getElementById('art-title').textContent = art.headline;
+  document.getElementById('art-body').innerHTML = art.body;
+  document.getElementById('article-overlay').classList.add('show');
+  document.getElementById('article-overlay').querySelector('.art-modal-inner').scrollTop = 0;
+}
+function closeArticle() {
+  document.getElementById('article-overlay').classList.remove('show');
+}
+
 </script>
 </body>
 </html>
