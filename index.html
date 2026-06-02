@@ -105,14 +105,6 @@ a{text-decoration:none;color:inherit;}
 .s-card-link{cursor:pointer;}
 .s-card-link:hover .s-title{color:var(--gold);}
 .s-card-link:hover{border-color:rgba(217,26,26,.4)!important;}
-.sp-grid{display:grid;grid-template-columns:1fr 1fr;padding:10px 16px;gap:0;border-bottom:1px solid var(--border);}
-.sp-stat{padding:5px 0;border-bottom:1px solid rgba(29,33,51,.6);display:flex;flex-direction:column;gap:2px;}
-.sp-stat:nth-last-child(-n+2){border-bottom:none;}
-.sp-stat-l{font-family:var(--edit);font-size:8px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;}
-.sp-v{font-family:var(--edit);font-size:11px;color:var(--white);font-weight:500;}
-.sp-footer{padding:9px 16px;text-align:center;}
-.sp-yf-link{font-family:var(--edit);font-size:9px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:color .2s;}
-.sp-yf-link:hover{color:#e8c970;}
 
 /* HERO */
 .hero{position:relative;background:#000;}
@@ -377,17 +369,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
           <div class="sp-range-day-title">Day Range</div>
         </div>
-        <div class="sp-grid">
-          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
-        </div>
-        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
       </div>
     </div>
   </header>
@@ -420,30 +401,30 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
       <div class="s-head"><h2>Latest Coverage</h2><a href="#">View All &#8594;</a></div>
       <div class="two-col">
         <div class="feat-card feat-card-link" onclick="openArticle(0)" style="border:1px solid var(--border);">
-          <div class="feat-media" style="background:linear-gradient(135deg,#0a0c12,#1a0a0a);position:relative;">
-            <span style="font-size:52px;opacity:.15;">&#127968;</span>
-            <div style="position:absolute;bottom:10px;left:14px;font-family:var(--edit);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">June 1, 2026</div>
+          <div class="feat-media" style="padding:0;overflow:hidden;position:relative;">
+            <img src="https://static.wixstatic.com/media/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg/v1/fill/w_2500,h_1666,al_c/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg" alt="Article Image" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <div style="position:absolute;bottom:10px;left:14px;font-family:var(--edit);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.5);padding:2px 6px;">June 1, 2026</div>
           </div>
           <p class="feat-tag" style="color:var(--red);">Breaking</p>
           <h3 class="feat-hl">&#8220;The Claw&#8221; Looms Over the Briefing Room: UFC Construction Sparks White House Press Confrontation</h3>
           <p class="feat-body">The UFC&#8217;s massive Belgian-built lighting structure has grown tall enough to be seen towering over the White House briefing room&#8217;s roof, triggering heated exchanges between reporters and press officials during Monday&#8217;s daily briefing. Click to read the full story.</p>
         </div>
         <div class="sidebar">
-          <div class="s-card s-card-link" onclick="openArticle(1)"><div class="s-thumb" style="font-size:20px;color:rgba(217,26,26,.4)">&#129354;</div><div><p class="s-badge" style="color:var(--red)">Breaking</p><p class="s-title">Makhachev Targets August Return, Names Ian Garry as Top Challenger</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(2)"><div class="s-thumb" style="font-size:20px;color:rgba(201,168,76,.4)">&#127942;</div><div><p class="s-badge" style="color:var(--gold)">Contender</p><p class="s-title">Tsarukyan: &#8216;I&#8217;m Next&#8217; &#8212; Armenian Star Calls His Shot After White House Card</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(3)"><div class="s-thumb" style="font-size:20px;color:rgba(201,168,76,.4)">&#128683;</div><div><p class="s-badge" style="color:var(--gold)">Exclusive</p><p class="s-title">Topuria: &#8216;The UFC Doesn&#8217;t Want to Make&#8217; the Makhachev Superfight</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(4)"><div class="s-thumb" style="font-size:20px;color:rgba(129,135,153,.4)">&#127358;</div><div><p class="s-badge" style="color:var(--muted)">Feature</p><p class="s-title">Dana White: UFC Is Paying the Full $60M for the White House Card</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(5)"><div class="s-thumb" style="font-size:20px;color:rgba(34,197,94,.35)">&#128200;</div><div><p class="s-badge" style="color:#22c55e">Finance</p><p class="s-title">TKO Beats Estimates With $1.6B Revenue Quarter, Raises Full-Year Guidance</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(1)"><div class="s-thumb" style="padding:0;overflow:hidden;"><img src="https://static.wixstatic.com/media/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg/v1/fill/w_2500,h_1666,al_c/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div><p class="s-badge" style="color:var(--red)">Breaking</p><p class="s-title">Makhachev Targets August Return, Names Ian Garry as Top Challenger</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(2)"><div class="s-thumb" style="padding:0;overflow:hidden;"><img src="https://static.wixstatic.com/media/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg/v1/fill/w_2500,h_1666,al_c/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div><p class="s-badge" style="color:var(--gold)">Contender</p><p class="s-title">Tsarukyan: &#8216;I&#8217;m Next&#8217; &#8212; Armenian Star Calls His Shot After White House Card</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(3)"><div class="s-thumb" style="padding:0;overflow:hidden;"><img src="https://static.wixstatic.com/media/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg/v1/fill/w_2500,h_1666,al_c/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div><p class="s-badge" style="color:var(--gold)">Exclusive</p><p class="s-title">Topuria: &#8216;The UFC Doesn&#8217;t Want to Make&#8217; the Makhachev Superfight</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(4)"><div class="s-thumb" style="padding:0;overflow:hidden;"><img src="https://static.wixstatic.com/media/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg/v1/fill/w_2500,h_1666,al_c/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div><p class="s-badge" style="color:var(--muted)">Feature</p><p class="s-title">Dana White: UFC Is Paying the Full $60M for the White House Card</p></div></div>
+          <div class="s-card s-card-link" onclick="openArticle(5)"><div class="s-thumb" style="padding:0;overflow:hidden;"><img src="https://static.wixstatic.com/media/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg/v1/fill/w_2500,h_1666,al_c/c2d5cc_7ed85249bded4044adcdde2ed2391a27~mv2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"></div><div><p class="s-badge" style="color:#22c55e">Finance</p><p class="s-title">TKO Beats Estimates With $1.6B Revenue Quarter, Raises Full-Year Guidance</p></div></div>
         </div>
       </div>
     </div>
     <div class="s-gap">
       <div class="s-head"><h2>Short Form Content</h2><a href="#">View All &#8594;</a></div>
       <div class="reel-row">
-        <div class="reel-card"><span class="reel-plat">TikTok</span><div class="reel-play">&#9654;</div><span class="ph-text">Place Holder</span></div>
-        <div class="reel-card"><span class="reel-plat">Instagram Reels</span><div class="reel-play">&#9654;</div><span class="ph-text">Place Holder</span></div>
-        <div class="reel-card"><span class="reel-plat">YouTube Short</span><div class="reel-play">&#9654;</div><span class="ph-text">Place Holder</span></div>
-        <div class="reel-card"><span class="reel-plat">X / Clip</span><div class="reel-play">&#9654;</div><span class="ph-text">Place Holder</span></div>
+        <div class="reel-card" style="padding:0;overflow:hidden;position:relative;"><span class="reel-plat">TikTok</span><iframe src="https://www.tiktok.com/embed/v2/7450368969648868654" allow="autoplay;fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
+        <div class="reel-card" style="padding:0;overflow:hidden;position:relative;"><span class="reel-plat">Instagram Reels</span><iframe src="https://www.tiktok.com/embed/v2/7450368969648868654" allow="autoplay;fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
+        <div class="reel-card" style="padding:0;overflow:hidden;position:relative;"><span class="reel-plat">YouTube Short</span><iframe src="https://www.tiktok.com/embed/v2/7450368969648868654" allow="autoplay;fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
+        <div class="reel-card" style="padding:0;overflow:hidden;position:relative;"><span class="reel-plat">X / Clip</span><iframe src="https://www.tiktok.com/embed/v2/7450368969648868654" allow="autoplay;fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe></div>
       </div>
     </div>
   </main>
@@ -457,7 +438,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
         <div class="ft-col"><h3>Follow Us</h3><a href="#">Twitter / X</a><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Facebook</a></div>
       </div>
       <div class="ft-bottom">
-        <p>&copy; 2025 Boxing Access Media, Inc. &middot; pressnetwork.org</p>
+        <p>&copy; 2026 National Press Network &middot; pressnetwork.org</p>
         <p>Privacy Policy &nbsp;&middot;&nbsp; Terms of Use &nbsp;&middot;&nbsp; Advertising</p>
       </div>
     </div>
@@ -529,17 +510,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
           <div class="sp-range-day-title">Day Range</div>
         </div>
-        <div class="sp-grid">
-          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
-        </div>
-        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
       </div>
     </div>
   </header>
@@ -622,17 +592,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
           <div class="sp-range-day-title">Day Range</div>
         </div>
-        <div class="sp-grid">
-          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
-        </div>
-        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
       </div>
     </div>
   </header>
@@ -721,17 +680,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
           <div class="sp-range-day-title">Day Range</div>
         </div>
-        <div class="sp-grid">
-          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
-        </div>
-        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
       </div>
     </div>
   </header>
@@ -836,17 +784,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="sp-bar-track"><div class="sp-bar-fill" style="width:50%"></div><div class="sp-bar-dot" style="left:50%"></div></div>
           <div class="sp-range-day-title">Day Range</div>
         </div>
-        <div class="sp-grid">
-          <div class="sp-stat"><span class="sp-stat-l">Open</span><span class="sp-v sp-open">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Prev Close</span><span class="sp-v sp-prev">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day High</span><span class="sp-v sp-dayhigh">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Day Low</span><span class="sp-v sp-daylow">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Volume</span><span class="sp-v sp-vol">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">Mkt Cap</span><span class="sp-v sp-mktcap">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W High</span><span class="sp-v sp-52h">&#8212;</span></div>
-          <div class="sp-stat"><span class="sp-stat-l">52W Low</span><span class="sp-v sp-52l">&#8212;</span></div>
-        </div>
-        <div class="sp-footer"><a href="https://finance.yahoo.com/quote/TKO/" target="_blank" class="sp-yf-link">View full quote on Yahoo Finance &#8599;</a></div>
       </div>
     </div>
   </header>
@@ -1028,21 +965,25 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 
 <script>
 /* ── ARTICLE TITLES (update when publishing new content) ── */
-var ARTICLE_TITLES = [
-  'Place Holder - Article Title 1',
-  'Place Holder - Article Title 2',
-  'Place Holder - Article Title 3',
-  'Place Holder - Article Title 4',
-  'Place Holder - Article Title 5',
-  'Place Holder - Article Title 6',
-  'Place Holder - Article Title 7',
-  'Place Holder - Article Title 8'
+/* ── TICKER: clickable article title links ── */
+var TICKER_ARTICLES = [
+  { idx:0, title:'“The Claw” Looms Over the Briefing Room: UFC Construction Sparks White House Press Confrontation' },
+  { idx:1, title:'Makhachev Targets August Return, Names Ian Garry as Preferred Challenger' },
+  { idx:2, title:'Tsarukyan: “My Next Fight Is the Title Fight” — Armenian Star Calls His Shot' },
+  { idx:3, title:'Topuria: “The UFC Doesn’t Want to Make” the Makhachev Superfight' },
+  { idx:4, title:'Dana White: UFC Is Spending $60 Million on the White House Fight — Every Dollar of It' },
+  { idx:5, title:'TKO Beats Wall Street With $1.6 Billion Quarter, Raises Full-Year Guidance' }
 ];
 
-var tickerText = ARTICLE_TITLES.join('   |   ');
+function buildTickerHTML() {
+  return TICKER_ARTICLES.map(function(a) {
+    return '<a onclick="openArticle(' + a.idx + ');return false;" href="#" style="color:#fff;text-decoration:none;white-space:nowrap;" onmouseover="this.style.textDecoration=\'underline\'" onmouseout="this.style.textDecoration=\'none\'">' + a.title + '</a>';
+  }).join('<span style="margin:0 22px;opacity:.45;">|</span>');
+}
+
 ['ticker-home','ticker-int','ticker-ab','ticker-ct','ticker-roster'].forEach(function(id){
   var el = document.getElementById(id);
-  if(el) el.textContent = tickerText;
+  if(el) el.innerHTML = buildTickerHTML();
 });
 
 /* ── DATE ── */
