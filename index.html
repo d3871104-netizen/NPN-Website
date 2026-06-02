@@ -109,6 +109,7 @@ a{text-decoration:none;color:inherit;}
 /* HERO */
 .hero{position:relative;background:#000;}
 .hero-iframe-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+.hero-iframe-wrap > div{position:absolute;top:0;left:0;width:100%;height:100%;}
 .hero-iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;}
 .hero-caption{background:var(--deep);border-bottom:1px solid var(--border);padding:20px 48px;}
 .hero-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--edit);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;margin-bottom:8px;}
@@ -319,6 +320,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 @media(max-width:960px){.two-col{grid-template-columns:1fr;}.reel-row{grid-template-columns:1fr 1fr;}.ft-grid{grid-template-columns:1fr 1fr;}.int-grid{grid-template-columns:1fr 1fr;}.contact-wrap{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr;}.sponsors-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:600px){.fighter-grid{grid-template-columns:1fr;}.int-grid{grid-template-columns:1fr;}.masthead{padding:0 10px;}.wordmark h1{font-size:14px;letter-spacing:2px;}.reel-row{grid-template-columns:1fr 1fr;}.sub-modal,.roster-modal{width:320px;}.sub-head,.sub-body,.roster-modal-head,.roster-modal-body{padding:20px;}.hero-caption{padding:14px 20px;}.stock-tracker{min-width:80px;}.tko-price{font-size:12px;}.tko-chg{display:none;}}
 </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4223029462173933"
          crossorigin="anonymous"></script>
 </head>
@@ -400,7 +402,10 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 
   <section class="hero">
     <div class="hero-iframe-wrap">
-      <iframe src="https://www.youtube.com/embed/hxh_PwsI6Gs?rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="BAM Featured Video"></iframe>
+      <!-- Hero video slideshow -->
+      <div id="hero-player"></div>
+      <!-- Slide indicator dots -->
+      <div id="hero-dots" style="position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5;pointer-events:none;"></div>
     </div>
     <div class="hero-caption">
       <span class="hero-tag">Featured Story</span>
@@ -1377,6 +1382,65 @@ function toggleInvestForm() {
       col.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 60);
   }
+}
+
+/* ── HERO VIDEO SLIDESHOW ── */
+var HERO_CLIPS = [
+  { id: 'sOnqjkJTMaA', start: 5  },   // Thriller
+  { id: 'yURRmWtbTbo', start: 0  },   // Don't Stop 'Til You Get Enough
+  { id: 'oRdxUFDoQe0', start: 0  },   // Beat It
+  { id: 'dsUXAEzaC3Q', start: 0  }    // Bad
+];
+var HERO_DURATION = 4000;
+var heroIdx       = 0;
+var heroPlayer    = null;
+var heroTimer     = null;
+
+function onYouTubeIframeAPIReady() {
+  /* Build indicator dots */
+  var dots = document.getElementById('hero-dots');
+  if (dots) {
+    HERO_CLIPS.forEach(function(_, i) {
+      var d = document.createElement('div');
+      d.id = 'hdot-' + i;
+      d.style.cssText = 'width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,'
+                       + (i === 0 ? '1' : '.38') + ');transition:background .4s;flex-shrink:0;';
+      dots.appendChild(d);
+    });
+  }
+
+  heroPlayer = new YT.Player('hero-player', {
+    height: '100%',
+    width:  '100%',
+    videoId: HERO_CLIPS[0].id,
+    playerVars: {
+      autoplay: 1, mute: 1, controls: 0, rel: 0,
+      modestbranding: 1, playsinline: 1,
+      start: HERO_CLIPS[0].start,
+      iv_load_policy: 3, disablekb: 1, fs: 0
+    },
+    events: {
+      onReady: function(e) {
+        e.target.mute();
+        e.target.playVideo();
+        heroTimer = setInterval(heroNextClip, HERO_DURATION);
+      },
+      onError: function() { heroNextClip(); }
+    }
+  });
+}
+
+function heroNextClip() {
+  heroIdx = (heroIdx + 1) % HERO_CLIPS.length;
+  if (heroPlayer && heroPlayer.loadVideoById) {
+    heroPlayer.loadVideoById({ videoId: HERO_CLIPS[heroIdx].id, startSeconds: HERO_CLIPS[heroIdx].start });
+    heroPlayer.mute();
+  }
+  /* Update dots */
+  HERO_CLIPS.forEach(function(_, i) {
+    var d = document.getElementById('hdot-' + i);
+    if (d) d.style.background = 'rgba(255,255,255,' + (i === heroIdx ? '1' : '.38') + ')';
+  });
 }
 
 </script>
