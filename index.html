@@ -404,8 +404,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
     <div class="hero-iframe-wrap">
       <!-- Hero video slideshow -->
       <div id="hero-player"></div>
-      <!-- Slide indicator dots -->
-      <div id="hero-dots" style="position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5;pointer-events:none;"></div>
     </div>
     <div class="hero-caption">
       <span class="hero-tag">Featured Story</span>
@@ -1391,24 +1389,12 @@ var HERO_CLIPS = [
   { id: 'oRdxUFDoQe0', start: 0  },   // Beat It
   { id: 'dsUXAEzaC3Q', start: 0  }    // Bad
 ];
-var HERO_DURATION = 4000;
+var HERO_DURATION = 12000;
 var heroIdx       = 0;
 var heroPlayer    = null;
 var heroTimer     = null;
 
 function onYouTubeIframeAPIReady() {
-  /* Build indicator dots */
-  var dots = document.getElementById('hero-dots');
-  if (dots) {
-    HERO_CLIPS.forEach(function(_, i) {
-      var d = document.createElement('div');
-      d.id = 'hdot-' + i;
-      d.style.cssText = 'width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,'
-                       + (i === 0 ? '1' : '.38') + ');transition:background .4s;flex-shrink:0;';
-      dots.appendChild(d);
-    });
-  }
-
   heroPlayer = new YT.Player('hero-player', {
     height: '100%',
     width:  '100%',
@@ -1436,11 +1422,6 @@ function heroNextClip() {
     heroPlayer.loadVideoById({ videoId: HERO_CLIPS[heroIdx].id, startSeconds: HERO_CLIPS[heroIdx].start });
     heroPlayer.mute();
   }
-  /* Update dots */
-  HERO_CLIPS.forEach(function(_, i) {
-    var d = document.getElementById('hdot-' + i);
-    if (d) d.style.background = 'rgba(255,255,255,' + (i === heroIdx ? '1' : '.38') + ')';
-  });
 }
 
 </script>
