@@ -793,8 +793,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
 
 </div>
 
-</div>
-
 <!-- ============================================================
      PAGE: CONTACT
 ============================================================ -->
@@ -1032,7 +1030,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="fighter-stat">Division: <span>Weight Class</span></div>
         </div>
         <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
-        <div class="fighter-video-wrap" style="display:none;"></div>
+        <div class="fighter-video-wrap" style="margin-top:14px;"><iframe src="https://www.youtube.com/embed/KYu6i7lZ-Rs?rel=0&modestbranding=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen title="Dorian Schneider Highlights" style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe></div>
       </div>
     </div>
 
@@ -1047,7 +1045,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="fighter-stat">Division: <span>Weight Class</span></div>
         </div>
         <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
-        <div class="fighter-video-wrap" style="display:none;"></div>
+        <div class="fighter-video-wrap" style="margin-top:14px;"><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--deep);"><div style="font-size:28px;opacity:.2;">&#9654;</div><p style="font-family:var(--edit);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0;">Highlights Coming Soon</p></div></div>
       </div>
     </div>
 
@@ -1062,7 +1060,7 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
           <div class="fighter-stat">Division: <span>Weight Class</span></div>
         </div>
         <p class="fighter-bio">Place Holder &#8212; Fighter biography will appear here. This section will include background, fighting style, training history, notable achievements, and personal story.</p>
-        <div class="fighter-video-wrap" style="display:none;"></div>
+        <div class="fighter-video-wrap" style="margin-top:14px;"><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--deep);"><div style="font-size:28px;opacity:.2;">&#9654;</div><p style="font-family:var(--edit);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0;">Highlights Coming Soon</p></div></div>
       </div>
     </div>
 
@@ -1552,43 +1550,39 @@ function toggleInvestForm() {
 }
 
 /* ── HERO VIDEO SLIDESHOW ── */
-var HERO_CLIPS = [
-  { id: 'sOnqjkJTMaA', start: 5  },   // Thriller
-  { id: 'yURRmWtbTbo', start: 0  },   // Don't Stop 'Til You Get Enough
-  { id: 'oRdxUFDoQe0', start: 0  },   // Beat It
-  { id: 'dsUXAEzaC3Q', start: 0  }    // Bad
-];
-var HERO_DURATION = 12000;
-var heroIdx       = 0;
-var heroPlayer    = null;
-var heroTimer     = null;
+/* ── HERO VIDEO — Do You Wanna Be a Fighter? (looping, with audio) ── */
+var heroPlayer = null;
 
 function onYouTubeIframeAPIReady() {
   heroPlayer = new YT.Player('hero-player', {
     height: '100%',
     width:  '100%',
-    videoId: HERO_CLIPS[0].id,
+    videoId: 'X0AQ0Oqfyn4',
     playerVars: {
-      autoplay: 1, controls: 0, rel: 0,
-      modestbranding: 1, playsinline: 1,
-      start: HERO_CLIPS[0].start,
-      iv_load_policy: 3, disablekb: 1, fs: 0
+      autoplay: 1,
+      loop: 1,
+      playlist: 'X0AQ0Oqfyn4',
+      controls: 0,
+      rel: 0,
+      modestbranding: 1,
+      playsinline: 1,
+      iv_load_policy: 3,
+      disablekb: 1,
+      fs: 0
     },
     events: {
       onReady: function(e) {
         e.target.playVideo();
-        heroTimer = setInterval(heroNextClip, HERO_DURATION);
       },
-      onError: function() { heroNextClip(); }
+      onStateChange: function(e) {
+        /* Fallback loop in case the loop param doesn't trigger */
+        if (e.data === YT.PlayerState.ENDED) {
+          e.target.seekTo(0);
+          e.target.playVideo();
+        }
+      }
     }
   });
-}
-
-function heroNextClip() {
-  heroIdx = (heroIdx + 1) % HERO_CLIPS.length;
-  if (heroPlayer && heroPlayer.loadVideoById) {
-    heroPlayer.loadVideoById({ videoId: HERO_CLIPS[heroIdx].id, startSeconds: HERO_CLIPS[heroIdx].start });
-  }
 }
 
 </script>
