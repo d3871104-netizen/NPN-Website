@@ -116,7 +116,7 @@ a{text-decoration:none;color:inherit;}
 .hero{position:relative;background:#000;}
 .hero-iframe-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
 .hero-iframe-wrap > div{position:absolute;top:0;left:0;width:100%;height:100%;}
-.hero-iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;}
+.hero-iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;pointer-events:none;}
 .hero-caption{background:var(--deep);border-bottom:1px solid var(--border);padding:20px 48px;}
 .hero-tag{display:inline-block;background:var(--red);color:#fff;font-family:var(--edit);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;margin-bottom:8px;}
 .hero-hl{font-family:var(--disp);font-size:clamp(24px,3.5vw,46px);letter-spacing:2px;line-height:1;color:var(--white);margin-bottom:8px;}
@@ -539,51 +539,6 @@ footer{background:var(--deep);border-top:3px solid var(--red);padding:50px 28px 
       <div id="hero-player"></div>
     </div>
   </section>
-
-  <div class="ed-bar">
-    <span class="ed-date" id="ed-date"></span>
-    <span style="font-family:var(--disp);font-size:18px;letter-spacing:5px;color:var(--white);text-transform:uppercase;opacity:.9;line-height:1;">BAM <span style="color:var(--red);">NEWS</span> DESK</span>
-    <span style="width:1px;"></span>
-  </div>
-
-  <main class="main">
-    <div class="s-gap">
-      <div class="two-col">
-        <div class="feat-card feat-card-link" onclick="openArticle(0)" style="border:1px solid var(--border);">
-          <div class="feat-media" style="padding:0;overflow:hidden;position:relative;">
-            <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA24gHAL.img?w=4000&h=2666&m=4&q=87" alt="Article Image" style="width:100%;height:100%;object-fit:cover;display:block;">
-            <div style="position:absolute;bottom:10px;left:14px;font-family:var(--edit);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;background:rgba(0,0,0,.5);padding:2px 6px;">June 1, 2026</div>
-            <span style="position:absolute;bottom:3px;right:6px;font-family:Arial,sans-serif;font-size:8px;color:rgba(255,255,255,.55);letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.8);pointer-events:none;">© AP Photo / Andrew Caballero-Reynolds</span>
-          </div>
-          <p class="feat-tag" style="color:var(--red);">Breaking</p>
-          <h3 class="feat-hl">&#8220;The Claw&#8221; Looms Over the Briefing Room: UFC Construction Sparks White House Press Confrontation</h3>
-          <p class="feat-body">The UFC&#8217;s massive Belgian-built lighting structure has grown tall enough to be seen towering over the White House briefing room&#8217;s roof, triggering heated exchanges between reporters and press officials during Monday&#8217;s daily briefing. Click to read the full story.</p>
-        </div>
-        <div class="sidebar">
-          <div class="s-card s-card-link" onclick="openArticle(1)"><div class="s-thumb" style="padding:0;overflow:hidden;position:relative;"><img src="https://staticg.sportskeeda.com/editor/2024/06/3c472-17173492796514-1920.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;bottom:3px;right:6px;font-family:Arial,sans-serif;font-size:8px;color:rgba(255,255,255,.55);letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.8);pointer-events:none;">© Getty Images</span></div><div><p class="s-badge" style="color:var(--red)">Breaking</p><p class="s-title">Makhachev Targets August Return, Names Ian Garry as Top Challenger</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(2)"><div class="s-thumb" style="padding:0;overflow:hidden;position:relative;"><img src="https://bloodyelbow.com/wp-content/uploads/1/2025/08/GettyImages-2148561092-scaled.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;bottom:3px;right:6px;font-family:Arial,sans-serif;font-size:8px;color:rgba(255,255,255,.55);letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.8);pointer-events:none;">© Getty Images</span></div><div><p class="s-badge" style="color:var(--gold)">Contender</p><p class="s-title">Tsarukyan: &#8216;I&#8217;m Next&#8217; &#8212; Armenian Star Calls His Shot After White House Card</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(3)"><div class="s-thumb" style="padding:0;overflow:hidden;position:relative;"><img src="https://e0.365dm.com/24/10/2048x1152/skysports-ilia-topuria-mma_6729529.jpg?20241027082320" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;bottom:3px;right:6px;font-family:Arial,sans-serif;font-size:8px;color:rgba(255,255,255,.55);letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.8);pointer-events:none;">© Sky Sports</span></div><div><p class="s-badge" style="color:var(--gold)">Exclusive</p><p class="s-title">Topuria: &#8216;The UFC Doesn&#8217;t Want to Make&#8217; the Makhachev Superfight</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(4)"><div class="s-thumb" style="padding:0;overflow:hidden;position:relative;"><img src="https://sidekickboxing.co.uk/wp-content/uploads/2025/01/skysports-dana-white-ufc-mma_6012685.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;bottom:3px;right:6px;font-family:Arial,sans-serif;font-size:8px;color:rgba(255,255,255,.55);letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.8);pointer-events:none;">© Sky Sports</span></div><div><p class="s-badge" style="color:var(--muted)">Feature</p><p class="s-title">Dana White: UFC Is Paying the Full $60M for the White House Card</p></div></div>
-          <div class="s-card s-card-link" onclick="openArticle(5)"><div class="s-thumb" style="padding:0;overflow:hidden;position:relative;"><img src="https://www.sportbuzzbusiness.fr/wp-content/uploads/2023/09/TKO-group-UFC-WWE-endeavor-new-york-bourse-exchange-scaled.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;"><span style="position:absolute;bottom:3px;right:6px;font-family:Arial,sans-serif;font-size:8px;color:rgba(255,255,255,.55);letter-spacing:.3px;text-shadow:0 1px 2px rgba(0,0,0,.8);pointer-events:none;">© AFP</span></div><div><p class="s-badge" style="color:#22c55e">Finance</p><p class="s-title">TKO Beats Estimates With $1.6B Revenue Quarter, Raises Full-Year Guidance</p></div></div>
-        </div>
-      </div>
-    </div>
-    
-    </div>
-  </main>
-
-      <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
-        <!-- Rothwell MMA — Main Sponsor -->
-        <a href="https://rothwellmma.com" target="_blank" rel="noopener"
-           style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid rgba(217,26,26,.3);padding:12px 20px;text-decoration:none;transition:border-color .2s;"
-           onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='rgba(217,26,26,.3)'">
-          <div style="font-family:var(--disp);font-size:20px;letter-spacing:3px;color:var(--white);">ROTHWELL<span style="color:var(--red);"> MMA</span></div>
-          <div style="font-family:var(--edit);font-size:8px;color:var(--muted);letter-spacing:1px;line-height:1.5;">MAIN SPONSOR<br>Kenosha, WI</div>
-        </a>
-        <!-- Placeholder sponsors -->
-        <div style="background:var(--card);border:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;justify-content:center;"><img src="https://tse4.mm.bing.net/th/id/OIP.DXFPFJfudYrNPLK3NcB5VQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sponsor" style="height:52px;width:auto;max-width:140px;object-fit:contain;display:block;"></div>
-        <div style="background:var(--card);border:1px dashed var(--border);padding:12px 28px;font-family:var(--edit);font-size:9px;color:rgba(255,255,255,.2);letter-spacing:2px;text-transform:uppercase;">Your Brand Here</div>
-      </div>
     </div>
   </div>
 
